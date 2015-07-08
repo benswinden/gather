@@ -5,7 +5,7 @@ var fs = require('fs');
 
 var app = express();
 
-app.get('/scrape', function(req, res){
+app.get('/', function(req, res){
 
     // The URL we will scrape from - in our example Anchorman 2.
     url = 'http://www.imdb.com/title/tt1229340/';
@@ -18,7 +18,7 @@ app.get('/scrape', function(req, res){
 
         // First we'll check to make sure no errors occurred when making the request
         if(!error){
-
+            
             // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
             var $ = cheerio.load(html);
 
@@ -38,6 +38,9 @@ app.get('/scrape', function(req, res){
                 // Once we have our title, we'll store it to the our json object.
                 json.title = title;
             })
+        }
+        else {
+            console.log("error!");
         }
 
         // To write to the system we will use the built in 'fs' library.
