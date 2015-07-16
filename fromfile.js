@@ -13,7 +13,7 @@ var tableInputIndex = 0;
 
 app.get('/', function(req, res){
 
-    inputSingleTable('interface');
+    inputSingleTable('type');
     //inputTable();
 
     res.send('--------');
