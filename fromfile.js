@@ -13,7 +13,7 @@ var tableInputIndex = 0;
 
 app.get('/', function(req, res){
 
-    inputSingleTable('type');
+    inputSingleTable('machines');
     //inputTable();
 
     res.send('--------');
