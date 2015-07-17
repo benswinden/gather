@@ -10,10 +10,11 @@ var app = express();
 
 var inputs = ['clothes.html', 'colour.html', 'draw.html', 'flora.html', 'goods.html', 'graphic.html', 'humans.html', 'illustrate.html', 'image.html', 'interface.html', 'line.html', 'motion.html', 'object.html', 'photo.html', 'print.html', 'space.html', 'symbol.html', 'tattoo.html', 'type.html'];
 var tableInputIndex = 0;
+var createTable = true;
 
 app.get('/', function(req, res){
 
-    inputSingleTable('machines');
+    inputSingleTable('clothes');
     //inputTable();
 
     res.send('--------');
@@ -45,8 +46,11 @@ function inputSingleTable(inp) {
 
         db.serialize(function() {
 
-            console.log("Create table: " + inp);
-            db.run( 'CREATE TABLE ' + inp + '( link TEXT, img TEXT )' );
+            if (createTable) {
+
+                console.log("Create table: " + inp);
+                db.run( 'CREATE TABLE ' + inp + '( link TEXT, img TEXT )' );
+            }
 
             // Just to keep track of the number of items inputed for the console
             var counter = 0;
